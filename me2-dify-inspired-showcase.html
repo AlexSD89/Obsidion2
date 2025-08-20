@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me² - 给专家一个永不疲劳的专业分身</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8',
+                            400: '#a1a1aa', 500: '#71717a', 600: '#52525b', 700: '#3f3f46',
+                            800: '#27272a', 900: '#18181b', 950: '#09090b'
+                        },
+                        brand: {
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
+                            400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1',
+                            800: '#075985', 900: '#0c4a6e'
+                        },
+                        success: { 400: '#4ade80', 500: '#10b981', 600: '#059669' },
+                        purple: { 400: '#a855f7', 500: '#8b5cf6', 600: '#7c3aed' }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out'
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        'slideUp': {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        'fadeIn': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        
+        .gradient-brand {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(39, 39, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-connector {
+            position: relative;
+            padding: 120px 0;
+            overflow: hidden;
+        }
+        
+        .section-connector::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #0ea5e9, transparent);
+            transform: translateX(-50%);
+        }
+        
+        .flow-step {
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .flow-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .agent-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .power-bar {
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 25%, #eab308 50%, #84cc16 75%, #22c55e 100%);
+            height: 4px;
+            border-radius: 2px;
+            transform-origin: left;
+            animation: fillBar 2s ease-out forwards;
+        }
+        
+        @keyframes fillBar {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        /* 连接线动画 */
+        .connection-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 2s ease-out forwards;
+        }
+        
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white antialiased">
+
+    <!-- Hero Section - 品牌核心 -->
+    <section class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-600/30 rounded-full blur-3xl animate-pulse-slow"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl animate-pulse-slow"></div>
+        </div>
+        
+        <div class="max-w-5xl text-center relative z-10 animate-fade-in">
+            <!-- Me² Logo -->
+            <div class="mb-12">
+                <h1 class="text-8xl font-black gradient-brand mb-6">Me²</h1>
+                <p class="text-2xl text-gray-400 font-medium">专家know-how × AI超能力</p>
+            </div>
+            
+            <!-- 核心价值主张 -->
+            <h2 class="text-5xl font-bold mb-8 text-balance leading-tight">
+                给专家一个<br>
+                <span class="text-brand-400">永不疲劳的专业分身</span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto mb-12">
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    想象一下，如果您可以将自己30年的专业经验和判断力，完整地复制到一个AI助手中，
+                    让它24小时不间断地为您和您的客户提供专业级服务，这会给您的事业带来什么样的变化？
+                </p>
+            </div>
+            
+            <!-- Agent IP展示 -->
+            <div class="flex justify-center mb-12">
+                <div class="agent-avatar w-32 h-32 rounded-full flex items-center justify-center animate-float border-4 border-brand-500/30">
+                    <div class="text-5xl">🧠</div>
+                </div>
+            </div>
+            
+            <button id="exploreMore" class="bg-brand-600 hover:bg-brand-700 text-white px-12 py-4 rounded-xl font-bold text-xl transition-all transform hover:scale-105">
+                探索Me²如何实现
+            </button>
+        </div>
+    </section>
+
+    <!-- 连接段落1：问题与挑战 -->
+    <section class="section-connector bg-gray-900/30">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="flow-step">
+                <h3 class="text-3xl font-bold mb-8">专家面临的三大挑战</h3>
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 bg-red-600/20 rounded-xl mx-auto flex items-center justify-center">
+                            <i data-lucide="clock" class="w-8 h-8 text-red-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold">时间有限</h4>
+                        <p class="text-gray-400">专家时间是稀缺资源，无法同时服务更多客户</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 bg-orange-600/20 rounded-xl mx-auto flex items-center justify-center">
+                            <i data-lucide="repeat" class="w-8 h-8 text-orange-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold">重复劳动</h4>
+                        <p class="text-gray-400">相似问题重复回答，专业能力没有得到最大化利用</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="w-16 h-16 bg-yellow-600/20 rounded-xl mx-auto flex items-center justify-center">
+                            <i data-lucide="trending-down" class="w-8 h-8 text-yellow-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold">成长瓶颈</h4>
+                        <p class="text-gray-400">个人服务能力有天花板，难以规模化增长</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8 text-left max-w-2xl mx-auto">
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        <span class="text-brand-400 font-semibold">传统AI助手无法解决这些问题。</span>
+                        它们只是通用的问答机器人，缺乏专业深度，无法理解您独特的专业判断逻辑，
+                        更不能代表您为客户提供专业级服务。<br><br>
+                        <span class="text-purple-400 font-semibold">Me²不同。</span>
+                        我们要做的是将您的专业大脑完整数字化，创造一个真正掌握您专业精华的AI分身。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Me²解决方案：三步骤可视化流程 -->
+    <section class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6">Me²如何创造您的专业分身</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    通过科学的认知萃取方法和先进的AI技术，我们帮您构建一个真正理解您专业思维的AI代理
+                </p>
+            </div>
+            
+            <!-- 三步流程可视化 -->
+            <div class="relative">
+                <!-- 连接线 -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none hidden lg:block">
+                    <path class="connection-line" d="M 200 150 Q 400 100 600 150 T 1000 150" 
+                          stroke="#0ea5e9" stroke-width="2" fill="none" opacity="0.6"/>
+                </svg>
+                
+                <div class="grid lg:grid-cols-3 gap-16 relative z-10">
+                    <!-- 步骤1：认知萃取 -->
+                    <div class="flow-step text-center">
+                        <div class="w-24 h-24 bg-brand-600/20 rounded-2xl mx-auto mb-8 flex items-center justify-center relative">
+                            <i data-lucide="brain" class="w-12 h-12 text-brand-400"></i>
+                            <span class="absolute -top-3 -right-3 w-8 h-8 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold">1</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">专业认知萃取</h3>
+                        
+                        <!-- 可视化访谈过程 -->
+                        <div class="glass-card rounded-xl p-6 mb-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-6 h-6 bg-brand-600 rounded-full flex items-center justify-center text-xs font-bold">AI</div>
+                                    <div class="bg-gray-800 rounded-lg p-3 flex-1 text-left">
+                                        <p class="text-sm">您在做投资决策时，最看重哪些因素？</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3 justify-end">
+                                    <div class="bg-brand-600 rounded-lg p-3 flex-1 text-left">
+                                        <p class="text-sm text-white">团队背景、市场规模、技术壁垒...</p>
+                                    </div>
+                                    <div class="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center text-xs">👤</div>
+                                </div>
+                                
+                                <!-- 提取进度 -->
+                                <div class="mt-4">
+                                    <div class="flex justify-between text-xs text-gray-400 mb-2">
+                                        <span>认知提取进度</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="bg-gray-800 rounded-full h-1">
+                                        <div class="power-bar w-5/6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400">30分钟深度访谈，系统性提取您的专业框架、判断标准和思维模式</p>
+                    </div>
+                    
+                    <!-- 步骤2：AI架构定制 -->
+                    <div class="flow-step text-center">
+                        <div class="w-24 h-24 bg-purple-600/20 rounded-2xl mx-auto mb-8 flex items-center justify-center relative">
+                            <i data-lucide="cpu" class="w-12 h-12 text-purple-400"></i>
+                            <span class="absolute -top-3 -right-3 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">2</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">AI架构定制</h3>
+                        
+                        <!-- BMAD架构可视化 -->
+                        <div class="glass-card rounded-xl p-6 mb-6">
+                            <h4 class="text-lg font-bold mb-4 text-purple-400">BMAD多Agent协作</h4>
+                            <div class="grid grid-cols-3 gap-2 mb-4">
+                                <div class="bg-purple-600/30 rounded p-2 text-xs font-bold">PM</div>
+                                <div class="bg-purple-600/30 rounded p-2 text-xs font-bold">QA</div>
+                                <div class="bg-purple-600/30 rounded p-2 text-xs font-bold">SM</div>
+                                <div class="bg-purple-600/30 rounded p-2 text-xs font-bold">DEV</div>
+                                <div class="bg-purple-600/30 rounded p-2 text-xs font-bold">ARCH</div>
+                                <div class="bg-purple-600/30 rounded p-2 text-xs font-bold">PO</div>
+                            </div>
+                            
+                            <!-- 训练指标 -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs">
+                                    <span>专业匹配度</span>
+                                    <span class="text-green-400">94%</span>
+                                </div>
+                                <div class="bg-gray-800 rounded-full h-1">
+                                    <div class="power-bar w-11/12"></div>
+                                </div>
+                                
+                                <div class="flex justify-between text-xs">
+                                    <span>思维模式</span>
+                                    <span class="text-brand-400">92%</span>
+                                </div>
+                                <div class="bg-gray-800 rounded-full h-1">
+                                    <div class="power-bar w-11/12"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400">基于您的专业特点，构建专属AI架构，确保每个回答都达到您的专业水准</p>
+                    </div>
+                    
+                    <!-- 步骤3：Better Me诞生 -->
+                    <div class="flow-step text-center">
+                        <div class="w-24 h-24 bg-green-600/20 rounded-2xl mx-auto mb-8 flex items-center justify-center relative">
+                            <i data-lucide="sparkles" class="w-12 h-12 text-green-400"></i>
+                            <span class="absolute -top-3 -right-3 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">3</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Better Me诞生</h3>
+                        
+                        <!-- Agent展示 -->
+                        <div class="glass-card rounded-xl p-6 mb-6">
+                            <div class="agent-avatar w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <div class="text-2xl">🎯</div>
+                            </div>
+                            <h4 class="font-bold mb-2 text-green-400">您的专业分身已激活</h4>
+                            
+                            <!-- 武力值展示 -->
+                            <div class="space-y-2 mb-4">
+                                <div class="flex justify-between text-xs">
+                                    <span>专业分析</span>
+                                    <span class="text-success-400">96/100</span>
+                                </div>
+                                <div class="bg-gray-800 rounded-full h-1">
+                                    <div class="power-bar w-11/12"></div>
+                                </div>
+                                
+                                <div class="flex justify-between text-xs">
+                                    <span>响应速度</span>
+                                    <span class="text-brand-400">98/100</span>
+                                </div>
+                                <div class="bg-gray-800 rounded-full h-1">
+                                    <div class="power-bar w-full"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-center space-x-2 text-green-400">
+                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-xs">24/7在线服务</span>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400">拥有您完整专业知识的AI分身，随时为您和客户提供专业级服务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 连接段落2：价值实现 -->
+    <section class="section-connector bg-gray-900/30">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flow-step text-center mb-16">
+                <h3 class="text-4xl font-bold mb-8">这意味着什么？</h3>
+                <div class="glass-card rounded-2xl p-8 text-left">
+                    <p class="text-xl leading-relaxed text-gray-300 mb-6">
+                        <span class="text-brand-400 font-semibold">想象一下这样的场景：</span><br>
+                        凌晨3点，您的客户在另一个时区遇到紧急问题需要专业分析。您的Me²立即响应，
+                        用您的专业逻辑进行深度分析，2分钟内提供了完整的解决方案和风险评估。
+                    </p>
+                    <p class="text-xl leading-relaxed text-gray-300">
+                        <span class="text-purple-400 font-semibold">第二天早晨，</span>
+                        您醒来发现已经处理了5个类似问题，每个都获得了客户的高度认可。
+                        而您，专注于真正需要创造性思维的高价值工作。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 成果对比 -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card rounded-xl p-6">
+                    <h4 class="text-xl font-bold mb-4 text-red-400">传统模式</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center space-x-2">
+                            <span class="text-red-400">×</span>
+                            <span>一天最多服务5-8个客户</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-red-400">×</span>
+                            <span>重复问题消耗大量时间</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-red-400">×</span>
+                            <span>无法24小时响应</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-red-400">×</span>
+                            <span>收入受时间严重限制</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card rounded-xl p-6 border-green-500/30">
+                    <h4 class="text-xl font-bold mb-4 text-green-400">Me²模式</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>同时服务50+客户</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>重复问题自动化处理</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>7x24小时专业服务</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>收入增长3-10倍</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实际应用演示 -->
+    <section class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">看看您的Better Me如何工作</h2>
+                <p class="text-xl text-gray-400">真实场景演示：投资分析专家的Me²</p>
+            </div>
+            
+            <!-- 对话演示 -->
+            <div class="glass-card rounded-2xl p-8 max-w-4xl mx-auto mb-16">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold">Me² - 您的投资分析分身</h3>
+                    <div class="flex items-center space-x-2 text-success-400">
+                        <div class="w-3 h-3 bg-success-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm">在线工作中</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-6" id="liveDemo">
+                    <!-- 客户问题 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-sm">👤</span>
+                        </div>
+                        <div class="bg-gray-800 rounded-xl p-4 max-w-md">
+                            <p class="text-sm">我在看一个AI芯片初创公司，团队来自NVIDIA，已经有2个大客户，应该投吗？</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Me²分析 -->
+                    <div class="flex items-start space-x-4 justify-end">
+                        <div class="bg-brand-600 rounded-xl p-4 max-w-lg">
+                            <div class="text-sm text-white space-y-3">
+                                <p><strong>基于您的投资逻辑分析：</strong></p>
+                                
+                                <div>
+                                    <p class="text-brand-100"><strong>优势评估 (8.5/10):</strong></p>
+                                    <p>• NVIDIA背景 = 顶级技术基因</p>
+                                    <p>• 2个大客户 = 市场验证成功</p>
+                                    <p>• AI芯片赛道 = 符合您的投资偏好</p>
+                                </div>
+                                
+                                <div>
+                                    <p class="text-yellow-200"><strong>关注风险:</strong></p>
+                                    <p>• 核心团队竞业限制情况</p>
+                                    <p>• 与NVIDIA潜在竞争关系</p>
+                                </div>
+                                
+                                <div class="bg-green-700/30 rounded p-2">
+                                    <p><strong>建议：立即安排尽调</strong></p>
+                                    <p>预估投资区间：800万-2000万</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-10 h-10 bg-brand-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-sm font-bold text-white">Me²</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 性能指标 -->
+                    <div class="border-t border-gray-700 pt-4 grid grid-cols-3 gap-4 text-center text-sm">
+                        <div>
+                            <div class="text-2xl font-bold text-brand-400">2.1s</div>
+                            <p class="text-gray-400">响应时间</p>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-success-400">12</div>
+                            <p class="text-gray-400">数据源检索</p>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-purple-400">96%</div>
+                            <p class="text-gray-400">专业匹配度</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商业价值总结 -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-brand-600/20 rounded-2xl mx-auto flex items-center justify-center">
+                        <i data-lucide="zap" class="w-8 h-8 text-brand-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">10倍效率提升</h3>
+                    <p class="text-gray-400">原本半天的分析工作，现在3分钟完成</p>
+                </div>
+                
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-success-600/20 rounded-2xl mx-auto flex items-center justify-center">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-success-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">服务规模扩展</h3>
+                    <p class="text-gray-400">同时服务更多客户，收入增长3-5倍</p>
+                </div>
+                
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-purple-600/20 rounded-2xl mx-auto flex items-center justify-center">
+                        <i data-lucide="brain" class="w-8 h-8 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">专注高价值创造</h3>
+                    <p class="text-gray-400">自动化处理常规工作，专注战略决策</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最终CTA -->
+    <section class="py-32 px-6 bg-gradient-to-b from-gray-950 to-gray-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="agent-avatar w-24 h-24 rounded-full mx-auto mb-8 flex items-center justify-center animate-float">
+                <div class="text-4xl">🚀</div>
+            </div>
+            
+            <h2 class="text-5xl font-bold mb-8">
+                准备创造您的<br>
+                <span class="gradient-brand">Better Me</span>
+                了吗？
+            </h2>
+            
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                30分钟专业访谈，获得永不疲劳的专业分身<br>
+                让AI放大您的专业能力，开启事业新篇章
+            </p>
+            
+            <div class="space-y-6">
+                <button class="bg-brand-600 hover:bg-brand-700 text-white px-16 py-5 rounded-xl font-bold text-xl transition-all transform hover:scale-105 shadow-2xl shadow-brand-600/25">
+                    立即开始创建Me²
+                </button>
+                
+                <p class="text-sm text-gray-500">
+                    免费咨询 · 30分钟专业访谈 · 7天内交付您的AI分身
+                </p>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-3 gap-8 max-w-lg mx-auto text-sm text-gray-400">
+                <div class="flex flex-col items-center space-y-2">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-green-400"></i>
+                    <span>企业级安全</span>
+                </div>
+                <div class="flex flex-col items-center space-y-2">
+                    <i data-lucide="clock" class="w-6 h-6 text-brand-400"></i>
+                    <span>7天交付</span>
+                </div>
+                <div class="flex flex-col items-center space-y-2">
+                    <i data-lucide="headphones" class="w-6 h-6 text-purple-400"></i>
+                    <span>专业支持</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-gray-800 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="text-4xl font-bold gradient-brand mb-4">Me²</div>
+            <p class="text-gray-500">专家大脑数字化社区 · Better Me = 专家know-how × AI超能力</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            
+            // 滚动动画观察器
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有流程步骤
+            document.querySelectorAll('.flow-step').forEach(step => {
+                observer.observe(step);
+            });
+            
+            // 探索更多按钮
+            document.getElementById('exploreMore').addEventListener('click', function() {
+                document.querySelector('.section-connector').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+            
+            // 按钮交互效果
+            document.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // 定期重新初始化图标
+            setInterval(() => {
+                lucide.createIcons();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
