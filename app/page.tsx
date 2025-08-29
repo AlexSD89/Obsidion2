@@ -168,7 +168,7 @@ export default function Me2NexusWebsite() {
               >
                 联系我们 Contact
               </Button>
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-1.5 rounded-full font-medium text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg shadow-md ml-2">
+              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-full font-medium text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg shadow-md ml-2">
                 立即体验 Try Now
               </Button>
             </div>
@@ -194,12 +194,12 @@ export default function Me2NexusWebsite() {
               <div className="space-y-6">
                 <h1 className="text-5xl sm:text-6xl lg:text-[4rem] font-bold text-gray-900 leading-[1.05] text-balance tracking-tight">
                   Meet{" "}
-                  <span className="bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-700 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-700 bg-clip-text text-transparent">
                     Me² NEXUS
                   </span>
                   <br />
                   专业级{" "}
-                  <span className="bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-700 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-700 bg-clip-text text-transparent">
                     AI决策系统
                   </span>
                 </h1>
@@ -213,7 +213,7 @@ export default function Me2NexusWebsite() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl"
                 >
                   Get started
                 </Button>
@@ -252,7 +252,7 @@ export default function Me2NexusWebsite() {
                                 <span className="text-white text-xs">智能数据分析</span>
                                 <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                               </div>
-                              <p className="text-purple-100 text-xs">AI驱动的实时数据洞察...</p>
+                              <p className="text-sky-100 text-xs">AI驱动的实时数据洞察...</p>
                             </div>
 
                             <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded p-2">
@@ -260,7 +260,7 @@ export default function Me2NexusWebsite() {
                                 <span className="text-white text-xs">战略规划助手</span>
                                 <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                               </div>
-                              <p className="text-purple-100 text-xs">端到端的企业转型战略...</p>
+                              <p className="text-sky-100 text-xs">端到端的企业转型战略...</p>
                             </div>
                           </div>
                         </div>
@@ -415,7 +415,7 @@ export default function Me2NexusWebsite() {
                       </div>
                       <span className="text-xs text-gray-600">Insights</span>
                     </div>
-                    <div className="w-5 h-5 bg-purple-600 rounded-md flex items-center justify-center">
+                    <div className="w-5 h-5 bg-emerald-600 rounded-md flex items-center justify-center">
                       <span className="text-white text-xs font-bold">L</span>
                     </div>
                   </div>
@@ -478,7 +478,7 @@ export default function Me2NexusWebsite() {
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-400/25 rounded-full blur-3xl translate-x-40 translate-y-40"></div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-purple-100 text-base mb-3">获得Bloomberg Terminal级数据 + Goldman Sachs级分析的AI分身团队</p>
+          <p className="text-sky-100 text-base mb-3">获得Bloomberg Terminal级数据 + Goldman Sachs级分析的AI分身团队</p>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold mb-7 text-balance tracking-tight">
             准备好突破专业边界了吗？
             <br />
@@ -510,7 +510,7 @@ export default function Me2NexusWebsite() {
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">选择适合您的方案</h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">从免费体验到专业服务，为每一位专业人士量身定制</p>
 
-            <div className="mt-6 inline-flex items-center bg-gradient-to-r from-purple-600 to-violet-700 text-white px-6 py-2 rounded-full text-sm font-bold animate-pulse shadow-lg">
+            <div className="mt-6 inline-flex items-center bg-gradient-to-r from-orange-500 to-amber-600 text-white px-6 py-2 rounded-full text-sm font-bold animate-pulse shadow-lg">
               ✨ 内测阶段：专业版限时免费使用！
             </div>
           </div>
@@ -519,7 +519,7 @@ export default function Me2NexusWebsite() {
             {/* 免费体验 */}
             <Card className="bg-gray-800 border-gray-700 p-8 text-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-violet-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <div className="text-2xl">⭐</div>
                 </div>
                 <h3 className="text-2xl font-bold mb-2">免费体验</h3>
@@ -567,17 +567,17 @@ export default function Me2NexusWebsite() {
             </Card>
 
             {/* 专业方案 - 推荐 */}
-            <Card className="bg-gradient-to-br from-purple-600 to-violet-700 border-purple-400 p-8 text-white hover:shadow-2xl hover:shadow-purple-400/30 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ring-2 ring-purple-400/50">
+            <Card className="bg-gradient-to-br from-sky-600 to-cyan-700 border-sky-400 p-8 text-white hover:shadow-2xl hover:shadow-sky-400/30 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden ring-2 ring-sky-400/50">
               <div className="absolute top-0 right-0 bg-gradient-to-l from-amber-400 to-yellow-500 text-gray-900 px-4 py-1 text-sm font-bold shadow-lg">
                 推荐方案
               </div>
 
-              <div className="absolute top-8 left-0 bg-gradient-to-r from-purple-500 to-violet-600 text-white px-3 py-1 text-xs font-bold transform -rotate-12 -translate-x-2 shadow-lg">
+              <div className="absolute top-8 left-0 bg-gradient-to-r from-orange-500 to-amber-600 text-white px-3 py-1 text-xs font-bold transform -rotate-12 -translate-x-2 shadow-lg">
                 内测免费
               </div>
 
               <div className="text-center pt-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-violet-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
                   <div className="text-2xl">🚀</div>
                 </div>
                 <h3 className="text-2xl font-bold mb-2">专业方案</h3>
@@ -585,43 +585,43 @@ export default function Me2NexusWebsite() {
                   <div className="text-2xl font-bold text-gray-300 line-through">¥99</div>
                   <div className="text-4xl font-bold">¥0</div>
                 </div>
-                <div className="text-purple-100 text-sm mb-6">/月 (内测期间)</div>
-                <p className="text-purple-100 mb-8">专业人士的AI超级增强器</p>
+                <div className="text-sky-100 text-sm mb-6">/月 (内测期间)</div>
+                <p className="text-sky-100 mb-8">专业人士的AI超级增强器</p>
 
                 <div className="space-y-4 mb-8 text-left">
                   <div className="flex items-center space-x-3">
                     <div className="w-5 h-5 bg-green-400 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-purple-100">每日3次报告生成</span>
+                    <span className="text-sky-100">每日3次报告生成</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-5 h-5 bg-green-400 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-purple-100">超额生成 12元/次</span>
+                    <span className="text-sky-100">超额生成 12元/次</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-5 h-5 bg-green-400 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-purple-100">5个专业Agent仓库</span>
+                    <span className="text-sky-100">5个专业Agent仓库</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-5 h-5 bg-green-400 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-purple-100">高级MRD和分析报告</span>
+                    <span className="text-sky-100">高级MRD和分析报告</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-5 h-5 bg-green-400 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
-                    <span className="text-purple-100">优先技术支持</span>
+                    <span className="text-sky-100">优先技术支持</span>
                   </div>
                 </div>
 
-                <Button className="w-full bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-400 hover:to-violet-500 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                <Button className="w-full bg-gradient-to-r from-sky-500 to-cyan-600 hover:from-sky-400 hover:to-cyan-500 text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] shadow-lg">
                   立即升级专业版
                 </Button>
               </div>
@@ -640,31 +640,31 @@ export default function Me2NexusWebsite() {
 
                 <div className="space-y-4 mb-8 text-left">
                   <div className="flex items-center space-x-3">
-                    <div className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
                     <span className="text-gray-300">无限制报告生成</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
                     <span className="text-gray-300">定制化Agent开发</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
                     <span className="text-gray-300">私有化部署选项</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
                     <span className="text-gray-300">7×24专属技术支持</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs">✓</span>
                     </div>
                     <span className="text-gray-300">SLA服务保障</span>
