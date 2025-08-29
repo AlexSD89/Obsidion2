@@ -4,6 +4,9 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Users, TrendingUp, ArrowRight, Brain, Zap, User, Briefcase, PenTool } from "lucide-react"
+import { InvestorAnalyst } from "@/components/avatars/InvestorAnalyst"
+import { CeoStrategist } from "@/components/avatars/CeoStrategist"  
+import { ConsultantDesigner } from "@/components/avatars/ConsultantDesigner"
 
 const ROLES = [
   {
@@ -493,6 +496,25 @@ export default function Me2NexusWebsite() {
                         </div>
                         AI分身协作中心
                       </h4>
+
+                      {/* AI头像组件区域 */}
+                      <div className="mb-4 flex justify-center">
+                        {currentRole.id === "investment_alex" && (
+                          <div className="transform scale-75">
+                            <InvestorAnalyst />
+                          </div>
+                        )}
+                        {currentRole.id === "ceo_sarah" && (
+                          <div className="transform scale-75">
+                            <CeoStrategist />
+                          </div>
+                        )}
+                        {currentRole.id === "consultant_david" && (
+                          <div className="transform scale-75">
+                            <ConsultantDesigner />
+                          </div>
+                        )}
+                      </div>
 
                       <div className="space-y-2.5">
                         {currentRole.agentSteps.map((step, index) => (
