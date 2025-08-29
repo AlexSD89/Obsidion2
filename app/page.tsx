@@ -9,12 +9,12 @@ const ROLES = [
   {
     id: "investment_alex",
     name: "Alex",
-    profession: "投资总监\n10年经验",
+    profession: "智能投资分析师\n实时市场洞察专家",
     icon: Briefcase,
-    description: "Bloomberg级投资分析专家",
-    scenario: "投资分析场景",
-    painPoint: "传统分析工具效率低，需要快速深度分析",
-    solution: "Bloomberg级数据源 + AI投资分析Agent + 实时市场洞察",
+    description: "专业级AI决策系统 - 投资分析专家",
+    scenario: "智能投资分析场景",
+    painPoint: "实时市场洞察，精准投资建议 - 数据驱动的投资决策支持",
+    solution: "Bloomberg级数据源 + AI投资分析Agent + 实时市场洞察 + Agentic Mesh协作",
     themeColor: "emerald",
     accentColor: "from-emerald-500 to-green-600",
     bgGradient: "from-emerald-50 to-green-50",
@@ -35,12 +35,12 @@ const ROLES = [
   {
     id: "ceo_sarah",
     name: "Sarah",
-    profession: "企业CEO\n战略决策",
+    profession: "CEO战略规划师\n企业转型路径专家",
     icon: User,
-    description: "企业战略决策支持专家",
-    scenario: "战略决策场景",
-    painPoint: "战略决策缺乏数据支撑，信息分散难以整合",
-    solution: "全维度商业分析 + 战略Agent协作 + 决策支持系统",
+    description: "专业级AI决策系统 - 战略规划专家",
+    scenario: "CEO战略规划场景",
+    painPoint: "企业转型路径，战略模块整合 - 全方位战略规划和执行指导",
+    solution: "全维度商业分析 + 战略Agent协作 + 决策支持系统 + Agentic Mesh整合",
     themeColor: "cyan",
     accentColor: "from-cyan-500 to-blue-600",
     bgGradient: "from-cyan-50 to-blue-50",
@@ -61,12 +61,12 @@ const ROLES = [
   {
     id: "consultant_david",
     name: "David",
-    profession: "资深顾问\n12年经验",
+    profession: "咨询设计专家\n创新设计指标专家",
     icon: PenTool,
-    description: "管理咨询解决方案专家",
-    scenario: "项目咨询场景",
-    painPoint: "客户项目复杂多样，需要快速专业方案定制",
-    solution: "知识图谱 + 咨询Agent军团 + 个性化方案生成",
+    description: "专业级AI决策系统 - 咨询设计专家",
+    scenario: "创新咨询设计场景",
+    painPoint: "创新设计指标，创意解决方案 - 设计思维驱动的业务创新",
+    solution: "知识图谱 + 咨询Agent军团 + 个性化方案生成 + Agentic Mesh创新",
     themeColor: "pink",
     accentColor: "from-pink-500 to-rose-600",
     bgGradient: "from-pink-50 to-rose-50",
@@ -197,15 +197,15 @@ export default function Me2NexusWebsite() {
                     Me² NEXUS
                   </span>
                   <br />
-                  你的{" "}
+                  专业级{" "}
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent">
-                    AI分身协作团队
+                    AI决策系统
                   </span>
                 </h1>
                 <p className="text-xl text-gray-600 max-w-xl leading-relaxed text-pretty">
-                  <strong>Me² = Me × Me</strong> — 专业经验 × AI超级处理能力 = 指数级放大。
+                  <strong>Me² = Me × Me</strong> — AI驱动的实时数据洞察和预测分析。
                   <br />
-                  突破时间、认知、处理、复制四重边界，24/7专业分身团队为你工作。
+                  将决策时间从数周缩短至数小时，基于大数据和AI算法的精准分析，突破传统思维模式的创新解决方案。
                 </p>
               </div>
 
@@ -227,7 +227,7 @@ export default function Me2NexusWebsite() {
                     <div className="w-7 h-7 bg-gradient-to-r from-pink-500 to-red-500 rounded-full border-2 border-white shadow-sm"></div>
                     <div className="w-7 h-7 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full border-2 border-white shadow-sm"></div>
                   </div>
-                  <span className="text-gray-600 font-medium text-sm">专业人士都在使用 Join professionals</span>
+                  <span className="text-gray-600 font-medium text-sm">专业级Agentic Mesh平台 Professional AI Platform</span>
                 </div>
               </div>
             </div>
@@ -240,26 +240,26 @@ export default function Me2NexusWebsite() {
                       <div className="grid grid-cols-2 gap-5">
                         <div className="bg-gray-800 rounded-lg p-4">
                           <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-white text-sm font-semibold">AI分身协作中心</h3>
+                            <h3 className="text-white text-sm font-semibold">Agentic Mesh协作中心</h3>
                             <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
                           </div>
-                          <p className="text-gray-400 text-xs mb-3">6个专业AI分身并行工作中</p>
+                          <p className="text-gray-400 text-xs mb-3">AI协作平台概念integration</p>
 
                           <div className="space-y-2">
                             <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded p-2">
                               <div className="flex items-center justify-between">
-                                <span className="text-white text-xs">投资分析AI</span>
+                                <span className="text-white text-xs">智能数据分析</span>
                                 <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                               </div>
-                              <p className="text-blue-100 text-xs">分析华人AI初创公司...</p>
+                              <p className="text-blue-100 text-xs">AI驱动的实时数据洞察...</p>
                             </div>
 
                             <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded p-2">
                               <div className="flex items-center justify-between">
-                                <span className="text-white text-xs">法律研究AI</span>
+                                <span className="text-white text-xs">战略规划助手</span>
                                 <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                               </div>
-                              <p className="text-purple-100 text-xs">检索相似案例中...</p>
+                              <p className="text-purple-100 text-xs">端到端的企业转型战略...</p>
                             </div>
                           </div>
                         </div>
@@ -272,19 +272,19 @@ export default function Me2NexusWebsite() {
 
                           <div className="space-y-2">
                             <div className="text-xs">
-                              <span className="text-gray-400">信息处理速度:</span>
-                              <p className="text-white">{aiProcessing.toLocaleString()}x 人类速度</p>
+                              <span className="text-gray-400">效率提升:</span>
+                              <p className="text-white">将决策时间从数周缩短至数小时</p>
                             </div>
 
                             <div className="text-xs">
-                              <span className="text-gray-400">数据源覆盖:</span>
-                              <p className="text-white">Bloomberg + CB Insights + LexisNexis</p>
+                              <span className="text-gray-400">精准度增强:</span>
+                              <p className="text-white">基于大数据和AI算法的精准分析</p>
                             </div>
 
                             <div className="bg-gray-700 rounded p-2">
                               <div className="flex items-center justify-between">
-                                <span className="text-white text-xs">质量保证AI:</span>
-                                <span className="text-green-400 text-xs">95%+ 准确率</span>
+                                <span className="text-white text-xs">创新驱动:</span>
+                                <span className="text-green-400 text-xs">突破传统思维模式</span>
                               </div>
                             </div>
                           </div>
