@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me² - 给专家一个永不疲劳的数字分身</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 优雅的灰色系
+                        gray: {
+                            50: '#fafafa', 100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8',
+                            400: '#a1a1aa', 500: '#71717a', 600: '#52525b', 700: '#3f3f46',
+                            800: '#27272a', 900: '#18181b', 950: '#09090b'
+                        },
+                        // 低饱和度蓝灰色系
+                        brand: {
+                            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+                            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+                            800: '#1e293b', 900: '#0f172a'
+                        },
+                        // 低饱和度灰色
+                        accent: {
+                            400: '#9ca3af', 500: '#6b7280', 600: '#52525b', 700: '#3f3f46'
+                        },
+                        // 低饱和度灰绿色
+                        success: {
+                            400: '#9ca3af', 500: '#6b7280', 600: '#4b5563'
+                        },
+                        // 低饱和度灰色
+                        warning: {
+                            400: '#9ca3af', 500: '#6b7280', 600: '#4b5563'
+                        }
+                    },
+                    // 优雅的动画效果 + 趣味性增强
+                    animation: {
+                        'float-gentle': 'float-gentle 4s ease-in-out infinite',
+                        'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+                        'slide-in-left': 'slide-in-left 0.8s ease-out forwards',
+                        'slide-in-right': 'slide-in-right 0.8s ease-out forwards',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'bounce-gentle': 'bounce-gentle 0.6s ease-out',
+                        'wiggle': 'wiggle 0.5s ease-in-out',
+                        'pulse-rainbow': 'pulse-rainbow 3s ease-in-out infinite',
+                        'flip-in': 'flip-in 0.6s ease-out',
+                        'wobble': 'wobble 1s ease-in-out infinite',
+                        'shake-hands': 'shake-hands 0.8s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        'float-gentle': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        },
+                        'pulse-soft': {
+                            '0%, 100%': { opacity: '0.8' },
+                            '50%': { opacity: '1' }
+                        },
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'slide-in-left': {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'slide-in-right': {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'glow': {
+                            '0%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.3)' },
+                            '100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.6)' }
+                        },
+                        'bounce-gentle': {
+                            '0%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        'wiggle': {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(-3deg)' },
+                            '75%': { transform: 'rotate(3deg)' }
+                        },
+                        'pulse-rainbow': {
+                            '0%': { background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)' },
+                            '33%': { background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)' },
+                            '66%': { background: 'linear-gradient(135deg, #ec4899 0%, #f59e0b 100%)' },
+                            '100%': { background: 'linear-gradient(135deg, #f59e0b 0%, #3b82f6 100%)' }
+                        },
+                        'flip-in': {
+                            '0%': { transform: 'rotateY(-90deg)', opacity: '0' },
+                            '100%': { transform: 'rotateY(0)', opacity: '1' }
+                        },
+                        'wobble': {
+                            '0%, 100%': { transform: 'translateX(0%)' },
+                            '15%': { transform: 'translateX(-8px) rotate(-5deg)' },
+                            '30%': { transform: 'translateX(6px) rotate(3deg)' },
+                            '45%': { transform: 'translateX(-4px) rotate(-3deg)' },
+                            '60%': { transform: 'translateX(2px) rotate(1deg)' },
+                            '75%': { transform: 'translateX(-1px) rotate(-1deg)' }
+                        },
+                        'shake-hands': {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+        
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .elegant-card {
+            background: #ffffff;
+            border: 1px solid #e4e4e7;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .elegant-card:hover {
+            box-shadow: 0 4px 12px 0 rgb(0 0 0 / 0.15);
+            transform: translateY(-1px);
+        }
+        
+        .minimal-card {
+            background: #ffffff;
+            border: 1px solid #e4e4e7;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .minimal-card:hover {
+            box-shadow: 0 4px 12px 0 rgb(0 0 0 / 0.15);
+            transform: translateY(-1px);
+        }
+        
+        .gradient-brand {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* 趣味性互动效果 - 保持简洁风格 */
+        .fun-logo:hover {
+            animation: wobble 0.8s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .fun-avatar:hover {
+            animation: bounce-gentle 0.6s ease-out;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        
+        .playful-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .playful-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .playful-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .easter-egg {
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease-out;
+        }
+        
+        .easter-egg.show {
+            opacity: 1;
+            transform: scale(1);
+            animation: wiggle 0.5s ease-in-out;
+        }
+        
+        .secret-feature {
+            cursor: pointer;
+        }
+        
+        .secret-feature:hover {
+            animation: shake-hands 0.8s ease-in-out;
+        }
+        
+        /* 连接线动画 */
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        /* 流程步骤滚动动画 */
+        .flow-step {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .flow-step.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 数据流动效果 */
+        .data-flow {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .data-flow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            animation: dataMove 2s ease-in-out infinite;
+        }
+        
+        @keyframes dataMove {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* 打字机效果 */
+        .typing-text {
+            overflow: hidden;
+            border-right: 2px solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+            animation-delay: 1s;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #3b82f6; }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    
+    
+    <!-- Hero Section - 简洁版 -->
+    <section class="min-h-screen flex items-center justify-center px-6 relative bg-white">        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <!-- 品牌Logo - 调整位置 -->
+            <div class="mb-12">
+                <div class="flex items-center justify-start mb-8 relative space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-accent-500 rounded-lg flex items-center justify-center shadow-lg animate-float-gentle">
+                        <span class="text-lg font-black text-white">Me²</span>
+                    </div>
+                    <div class="text-lg text-gray-600 font-medium">
+                        Better Me = 专家know-how × AI超能力
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 核心价值主张 - 简洁版 -->
+            <div class="max-w-3xl mx-auto mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold mb-8 leading-tight text-gray-900">
+                    不是AI工具<br>
+                    而是<span class="gradient-brand secret-feature" id="thinking-brain">会思考的专业分身</span>
+                    <span id="brain-easter-egg" class="easter-egg">🤔💡</span>
+                </h2>
+                
+                <!-- 简洁描述 -->
+                <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                    <span class="secret-feature" id="time-promise">30分钟深度访谈</span>，AI学会您的专业思维，创造<span class="gradient-brand">托管在云端</span>的智能分身
+                    <span id="time-easter-egg" class="easter-egg">⏰🚀</span>
+                </p>
+                <div class="mb-8 p-4 bg-blue-50 rounded-lg border-l-4 border-brand-500">
+                    <p class="text-sm text-gray-700">
+                        <span class="font-semibold text-brand-600">✨ 零部署，即开即用</span> - 
+                        您的AI分身托管在Me²云平台，通过Web页面随时访问，支持多任务并行处理
+                    </p>
+                </div>
+                
+                <!-- 核心价值点 - 简化版 -->
+                <div class="grid md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
+                    <div class="minimal-card rounded-lg p-6 text-left">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">学习您的思维</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• 复制判断逻辑</li>
+                            <li>• 学习决策标准</li>
+                            <li>• 继承专业直觉</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="minimal-card rounded-lg p-6 text-left">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">完全属于您</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• 知识完全保密</li>
+                            <li>• 只为您服务</li>
+                            <li>• 随时可删除</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 简洁CTA按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+                <button id="watchDemo" class="playful-button bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors relative z-10">
+                    <i data-lucide="zap" class="w-5 h-5 mr-2 inline"></i>开始创建分身
+                </button>
+                <button class="playful-button border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 px-8 py-3 rounded-lg font-medium transition-colors secret-feature relative z-10" id="demo-btn">
+                    <i data-lucide="play-circle" class="w-5 h-5 mr-2 inline"></i>查看演示
+                </button>
+            </div>
+            
+            <!-- 产品展示 - 客户群体分身 -->
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+                <!-- AI项目融资分身 -->
+                <div class="minimal-card rounded-lg p-6 animate-float-gentle">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">FundRaise² 融资分身</h3>
+                            <span class="text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded-full">AI项目专用</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        专为AI项目创始人打造，自动化处理融资、人才招聘和信息收集的全流程服务
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• 💰 智能投资人匹配和融资策略</li>
+                        <li>• 👥 精准人才筛选和技能评估</li>
+                        <li>• 📊 实时行业数据和竞争分析</li>
+                    </ul>
+                </div>
+
+                <!-- 企业AI顾问分身 -->
+                <div class="minimal-card rounded-lg p-6 animate-float-gentle" style="animation-delay: 1s">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="building-2" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">AIConsult² 顾问分身</h3>
+                            <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">企业转型</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        为传统企业数字化转型提供专业AI咨询，推荐最适合的产品和服务方案
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• 🎯 业务场景AI化分析和建议</li>
+                        <li>• 🛠️ 最佳AI产品智能推荐匹配</li>
+                        <li>• 🤝 优质服务商精准对接服务</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LaunchX AI协作引擎 - 完整展示 -->
+    <section id="framework" class="py-32 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6 text-gray-900">LaunchX AI协作引擎</h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">从客户需求到完美交付，展示我们的AI多Agent协作能力</p>
+                
+                <!-- 技术优势指标 -->
+                <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+                    <div class="minimal-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-black text-brand-600 mb-2">60s</div>
+                        <div class="text-sm text-gray-600 font-medium">需求理解</div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                            <div class="bg-brand-500 h-2 rounded-full animate-pulse" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="minimal-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-black text-purple-600 mb-2">6层</div>
+                        <div class="text-sm text-gray-600 font-medium">AI协作架构</div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                            <div class="bg-purple-500 h-2 rounded-full animate-pulse" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="minimal-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-black text-success-600 mb-2">24h</div>
+                        <div class="text-sm text-gray-600 font-medium">完整交付</div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                            <div class="bg-success-500 h-2 rounded-full animate-pulse" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="minimal-card rounded-xl p-6 text-center">
+                        <div class="text-3xl font-black text-warning-600 mb-2">∞</div>
+                        <div class="text-sm text-gray-600 font-medium">学习迭代</div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                            <div class="bg-warning-500 h-2 rounded-full animate-pulse" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 完整智能协作流程展示 -->
+            <div class="space-y-20">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-bold mb-6 gradient-brand">完整AI协作工作流</h3>
+                    <p class="text-lg text-gray-600">客户输入 → MRD生成 → 多层Agent处理 → 智能交付</p>
+                </div>
+                
+                <!-- 主流程可视化 -->
+                <div class="relative max-w-7xl mx-auto">
+                    <!-- 连接线SVG - 增强版 -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+                        <defs>
+                            <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+                                <stop offset="33%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+                                <stop offset="66%" style="stop-color:#10b981;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.8" />
+                            </linearGradient>
+                            <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                                <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:0.6" />
+                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+                        <!-- 主连接线 -->
+                        <path class="connection-line" d="M 150 300 Q 300 200 450 300 Q 600 200 750 300 Q 900 200 1050 300" 
+                              stroke="url(#flowGradient)" stroke-width="3" fill="none" opacity="0.8" 
+                              stroke-dasharray="1000" stroke-dashoffset="1000" 
+                              style="animation: drawLine 4s ease-out forwards;" />
+                        <!-- 发光效果 -->
+                        <path d="M 150 300 Q 300 200 450 300 Q 600 200 750 300 Q 900 200 1050 300" 
+                              stroke="url(#glowGradient)" stroke-width="6" fill="none" opacity="0.3" 
+                              stroke-dasharray="1000" stroke-dashoffset="1000" 
+                              style="animation: drawLine 4s ease-out forwards 0.5s;" />
+                    </svg>
+                    
+                    <!-- 四阶段完整流程展示 - 阶梯式布局 -->
+                    <div class="grid lg:grid-cols-4 gap-8 relative z-10 items-end">
+                        <!-- 阶段1: 客户输入 -->
+                        <div class="flow-step" style="min-height: 280px;">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg animate-float-gentle">
+                                    <span class="text-white font-bold text-xl">张</span>
+                                </div>
+                            </div>
+                            
+                            <!-- 输入模拟 -->
+                            <div class="elegant-card rounded-lg p-4 bg-blue-50 border-l-4 border-brand-500 mb-4 data-flow">
+                                <div class="space-y-2">
+                                    <div class="typing-text text-sm text-gray-800" style="width: 0; display: inline-block;">
+                                        "我需要一个智能投资分析系统，能够自动评估项目风险，生成详细报告..."
+                                    </div>
+                                    <div class="flex items-center space-x-2 mt-3">
+                                        <div class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></div>
+                                        <span class="text-xs text-gray-600">Me²正在理解需求...</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-1 h-1 bg-brand-400 rounded-full animate-bounce"></div>
+                                            <div class="w-1 h-1 bg-brand-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                                            <div class="w-1 h-1 bg-brand-400 rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 输入状态 -->
+                            <div class="text-xs text-center space-y-1">
+                                <div class="text-gray-600">需求复杂度: <span class="text-gray-800 font-bold">高</span></div>
+                                <div class="text-gray-600">预估工期: <span class="text-gray-800 font-bold">24h</span></div>
+                            </div>
+                            
+                            <!-- 阶段标识和描述 -->
+                            <div class="text-center mt-4">
+                                <div class="flex justify-center mb-2">
+                                    <div class="w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                                        1
+                                    </div>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-1">客户需求</h4>
+                                <p class="text-sm text-gray-600">用户自然语言输入项目需求</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 阶段2: MRD生成 -->
+                        <div class="flow-step" style="min-height: 350px;">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-gray-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg animate-float-gentle" style="animation-delay: 0.3s">
+                                    <i data-lucide="file-text" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- MRD生成过程 -->
+                            <div class="elegant-card rounded-lg p-4 bg-gray-50 border-l-4 border-gray-500 mb-4">
+                                <div class="space-y-2">
+                                    <div class="text-xs text-gray-700 font-semibold">市场需求文档</div>
+                                    <div class="space-y-1">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-xs text-gray-700">用户画像</span>
+                                            <span class="text-xs text-success-600">✓</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-xs text-gray-700">功能矩阵</span>
+                                            <span class="text-xs text-success-600">✓</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-xs text-gray-700">技术选型</span>
+                                            <span class="text-xs text-warning-600">⚡</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 生成进度 -->
+                            <div class="text-xs text-center">
+                                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                                    <div class="bg-gray-600 h-2 rounded-full animate-pulse" style="width: 75%"></div>
+                                </div>
+                                <span class="text-gray-700 font-bold">文档生成中 75%</span>
+                            </div>
+                            
+                            <!-- 阶段标识和描述 -->
+                            <div class="text-center mt-4">
+                                <div class="flex justify-center mb-2">
+                                    <div class="w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                                        2
+                                    </div>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-1">MRD生成</h4>
+                                <p class="text-sm text-gray-600">AI自动生成市场需求文档</p>
+                            </div>
+                        </div>
+
+                        <!-- 阶段3: 深度AI架构 -->
+                        <div class="flow-step" style="min-height: 480px;">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg animate-float-gentle" style="animation-delay: 0.6s">
+                                    <i data-lucide="network" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- 专业技术架构展示 -->
+                            <div class="elegant-card rounded-lg p-4 bg-purple-50 border-l-4 border-purple-500 mb-4">
+                                <!-- 第1层：数据源层 -->
+                                <div class="mb-4">
+                                    <div class="text-xs font-bold text-purple-800 mb-2">Layer 1: 数据源融合</div>
+                                    <div class="grid grid-cols-4 gap-2 mb-2">
+                                        <div class="bg-white rounded p-2 text-center shadow-sm">
+                                            <div class="text-xs font-semibold text-blue-600">📊 实时数据</div>
+                                            <div class="text-xs text-gray-600">1.2M条/秒</div>
+                                        </div>
+                                        <div class="bg-white rounded p-2 text-center shadow-sm">
+                                            <div class="text-xs font-semibold text-green-600">📈 市场数据</div>
+                                            <div class="text-xs text-gray-600">50+ API</div>
+                                        </div>
+                                        <div class="bg-white rounded p-2 text-center shadow-sm">
+                                            <div class="text-xs font-semibold text-orange-600">📰 新闻情报</div>
+                                            <div class="text-xs text-gray-600">200+ 源</div>
+                                        </div>
+                                        <div class="bg-white rounded p-2 text-center shadow-sm">
+                                            <div class="text-xs font-semibold text-purple-600">🧠 专业知识</div>
+                                            <div class="text-xs text-gray-600">您的大脑</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 第2层：向量化层 -->
+                                <div class="mb-4">
+                                    <div class="text-xs font-bold text-purple-800 mb-2">Layer 2: 向量知识库</div>
+                                    <div class="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg p-3">
+                                        <div class="grid grid-cols-3 gap-3 text-xs">
+                                            <div class="text-center">
+                                                <div class="font-bold text-indigo-600">2.8B</div>
+                                                <div class="text-gray-600">向量维度</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="font-bold text-purple-600">99.7%</div>
+                                                <div class="text-gray-600">检索精度</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="font-bold text-pink-600">&lt;50ms</div>
+                                                <div class="text-gray-600">查询延迟</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 第3层：Agent协作层 -->
+                                <div class="mb-4">
+                                    <div class="text-xs font-bold text-purple-800 mb-2">Layer 3: Multi-Agent协作</div>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div class="bg-white rounded p-2">
+                                            <div class="text-xs font-semibold text-blue-700 mb-1">检索Agent</div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-gray-600">语义搜索</span>
+                                                <span class="text-blue-600 font-bold">运行中</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-blue-500 h-1 rounded-full animate-pulse" style="width: 85%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white rounded p-2">
+                                            <div class="text-xs font-semibold text-green-700 mb-1">分析Agent</div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-gray-600">交叉验证</span>
+                                                <span class="text-green-600 font-bold">运行中</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-green-500 h-1 rounded-full animate-pulse" style="width: 92%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white rounded p-2">
+                                            <div class="text-xs font-semibold text-purple-700 mb-1">推理Agent</div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-gray-600">逻辑推导</span>
+                                                <span class="text-purple-600 font-bold">运行中</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-purple-500 h-1 rounded-full animate-pulse" style="width: 78%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white rounded p-2">
+                                            <div class="text-xs font-semibold text-orange-700 mb-1">优化Agent</div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-gray-600">多轮迭代</span>
+                                                <span class="text-orange-600 font-bold">第3轮</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                                                <div class="bg-orange-500 h-1 rounded-full animate-pulse" style="width: 67%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 实时计算状态 -->
+                                <div class="bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg p-3 text-white">
+                                    <div class="text-xs font-semibold mb-2 flex items-center">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></div>
+                                        实时计算引擎状态
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4 text-xs">
+                                        <div class="space-y-1">
+                                            <div class="flex justify-between">
+                                                <span>并发查询</span>
+                                                <span class="text-blue-400 font-bold">847个</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>交叉验证</span>
+                                                <span class="text-green-400 font-bold">92.7%</span>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-1">
+                                            <div class="flex justify-between">
+                                                <span>优化轮次</span>
+                                                <span class="text-purple-400 font-bold">第3轮</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>置信度</span>
+                                                <span class="text-yellow-400 font-bold">98.3%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 技术优势 -->
+                            <div class="text-xs text-center space-y-1">
+                                <div class="text-gray-600">系统投入: <span class="text-purple-600 font-bold">自动搭建</span></div>
+                                <div class="text-gray-600">最终能力: <span class="text-success-600 font-bold">向量检索</span></div>
+                            </div>
+                            
+                            <!-- 阶段标识和描述 -->
+                            <div class="text-center mt-4">
+                                <div class="flex justify-center mb-2">
+                                    <div class="w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                                        3
+                                    </div>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-1">AI深度架构</h4>
+                                <p class="text-sm text-gray-600">系统自动完成架构搭建</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 阶段4: 云端托管 -->
+                        <div class="flow-step" style="min-height: 420px;">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-gradient-to-br from-success-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg animate-float-gentle" style="animation-delay: 0.9s">
+                                    <i data-lucide="cloud" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- 托管服务展示 -->
+                            <div class="elegant-card rounded-lg p-4 bg-success-50 border-l-4 border-success-500 mb-4">
+                                <div class="space-y-3">
+                                    <div class="text-xs text-success-800 font-semibold">🚀 您的AI军团总部已建立</div>
+                                    
+                                    <!-- 模拟界面 -->
+                                    <div class="bg-white rounded-lg p-3 shadow-sm border">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                            <span class="text-xs font-semibold text-gray-700">me2.ai/张总投资分身</span>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            <button class="px-2 py-1 bg-brand-500 text-white text-xs rounded hover:bg-brand-600 transition-colors">
+                                                💼 新项目分析
+                                            </button>
+                                            <button class="px-2 py-1 bg-purple-500 text-white text-xs rounded hover:bg-purple-600 transition-colors">
+                                                📊 历史报告
+                                            </button>
+                                            <button class="px-2 py-1 bg-success-500 text-white text-xs rounded hover:bg-success-600 transition-colors">
+                                                🏭 扩建军团
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- AI军团优势 -->
+                                    <div class="space-y-1 text-xs">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-700">🎯 专业分身</span>
+                                            <span class="text-success-600 font-bold">24/7服务</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-700">🏭 军团扩建</span>
+                                            <span class="text-brand-600 font-bold">多领域覆盖</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-700">💰 商业化</span>
+                                            <span class="text-purple-600 font-bold">分身可售卖</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 商业价值 -->
+                            <div class="text-xs text-center space-y-1">
+                                <div class="text-gray-600">扩展潜力: <span class="text-brand-600 font-bold">AI军团</span></div>
+                                <div class="text-gray-600">商业模式: <span class="text-purple-600 font-bold">分身市场化</span></div>
+                            </div>
+                            
+                            <!-- 阶段标识和描述 -->
+                            <div class="text-center mt-4">
+                                <div class="flex justify-center mb-2">
+                                    <div class="w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                                        4
+                                    </div>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-1">平台托管</h4>
+                                <p class="text-sm text-gray-600">AI分身云端部署，24/7在线服务</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
+            <!-- 框架优势 - 简化版 -->
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold mb-8 text-gray-900">为什么选择LaunchX AI框架？</h3>
+                <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                    <div class="minimal-card rounded-lg p-4 text-center">
+                        <div class="w-12 h-12 bg-gray-900 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                            <i data-lucide="lightning" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-2">极速响应</h4>
+                        <p class="text-sm text-gray-600">60秒理解需求，24小时完整交付</p>
+                    </div>
+                    <div class="minimal-card rounded-lg p-4 text-center">
+                        <div class="w-12 h-12 bg-gray-900 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                            <i data-lucide="users-2" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-2">团队协作</h4>
+                        <p class="text-sm text-gray-600">PM+Dev+QA三位一体无缝配合</p>
+                    </div>
+                    <div class="minimal-card rounded-lg p-4 text-center">
+                        <div class="w-12 h-12 bg-gray-900 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                            <i data-lucide="award" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-2">质量保证</h4>
+                        <p class="text-sm text-gray-600">多重质量检查，100%交付标准</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 成功案例 - 简化版 -->
+    <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">🌟 这些专家已经拥有了自己的AI分身</h2>
+                <p class="text-lg text-gray-600">他们的"超能力"故事正在发生... <span class="secret-feature" id="stories-hint">点击头像听听他们怎么说</span></p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- AI项目客户案例 -->
+                <div class="minimal-card rounded-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-xl">🚀</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">AI项目创始人</h3>
+                            <p class="text-sm text-blue-600">找融资·找信息·找雇员</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        "我们的AI医疗项目需要快速找到合适的投资人、技术人才和行业资源。Me²平台帮我们构建了专业的融资分身，自动匹配投资偏好，筛选优质候选人。3个月完成A轮融资！"
+                    </p>
+                    
+                    <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                        <div class="text-xs font-semibold text-blue-800 mb-2">🎯 解决的核心痛点</div>
+                        <div class="space-y-1 text-xs text-gray-700">
+                            <div>• 💰 融资：精准匹配投资人偏好，提升成功率60%</div>
+                            <div>• 📊 信息：实时行业数据，竞争分析自动化</div>
+                            <div>• 👥 雇员：智能简历筛选，技能匹配度98%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-xs text-gray-500 space-y-1">
+                        <div class="flex justify-between">
+                            <span>融资效率</span>
+                            <span class="text-green-600 font-bold">+300%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>人才匹配</span>
+                            <span class="text-blue-600 font-bold">98%精准度</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>信息获取</span>
+                            <span class="text-purple-600 font-bold">24/7实时</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 企业客户案例 -->
+                <div class="minimal-card rounded-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-xl">🏢</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">传统企业CTO</h3>
+                            <p class="text-sm text-green-600">找AI咨询·产品·服务</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        "公司要数字化转型，但不知道从哪开始。Me²为我们配置了AI咨询分身，分析了我们的业务场景，推荐了最适合的AI产品和技术服务商。转型方案实施后效率提升40%！"
+                    </p>
+                    
+                    <div class="bg-green-50 rounded-lg p-4 mb-4">
+                        <div class="text-xs font-semibold text-green-800 mb-2">💡 提供的专业服务</div>
+                        <div class="space-y-1 text-xs text-gray-700">
+                            <div>• 🎯 AI咨询：业务场景分析，技术选型建议</div>
+                            <div>• 🛠️ 产品推荐：基于需求匹配最佳AI产品</div>
+                            <div>• 🤝 服务对接：优质AI服务商精准匹配</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-xs text-gray-500 space-y-1">
+                        <div class="flex justify-between">
+                            <span>转型效率</span>
+                            <span class="text-green-600 font-bold">+400%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>成本节省</span>
+                            <span class="text-blue-600 font-bold">-50%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>方案精准度</span>
+                            <span class="text-purple-600 font-bold">95%匹配</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 投资分身案例 -->
+                <div class="minimal-card rounded-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-xl">💰</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">VC合伙人</h3>
+                            <p class="text-sm text-yellow-600">专业投资决策·AI军团</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        "从一个投资分身开始，现在我有5个专业分身组成AI军团：项目筛选、尽调分析、风险评估、LP汇报、创业辅导。每个分身都在24/7为我的投资事业服务！"
+                    </p>
+                    
+                    <div class="bg-yellow-50 rounded-lg p-4 mb-4">
+                        <div class="text-xs font-semibold text-yellow-800 mb-2">🏭 AI投资军团矩阵</div>
+                        <div class="space-y-1 text-xs text-gray-700">
+                            <div>• 🎯 筛选分身：7维度项目智能评估</div>
+                            <div>• 🔍 尽调分身：深度调研和风险分析</div>
+                            <div>• 📊 汇报分身：LP沟通和投后管理</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-xs text-gray-500 space-y-1">
+                        <div class="flex justify-between">
+                            <span>军团规模</span>
+                            <span class="text-orange-600 font-bold">5个分身</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>投资成功率</span>
+                            <span class="text-green-600 font-bold">+40%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>服务收入</span>
+                            <span class="text-purple-600 font-bold">+500%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - 趣味增强版 -->
+    <section class="py-24 px-6 bg-gray-50">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6 text-gray-900">
+                🎯 准备拥有一个<br>
+                <span class="gradient-brand">永不疲劳的专业分身</span>吗？
+            </h2>
+            
+            <p class="text-lg text-gray-600 mb-8">
+                加入Me²超级专家俱乐部，让AI放大您的专业能力<br>
+                <span class="secret-feature" id="final-promise">30分钟访谈，终身专业伙伴</span>
+                <span id="final-easter-egg" class="easter-egg">🤝✨</span>
+            </p>
+            
+            <button class="playful-button bg-gray-900 hover:bg-gray-800 text-white px-12 py-4 rounded-lg font-semibold text-lg transition-colors mb-6 relative z-10" id="final-cta">
+                <i data-lucide="sparkles" class="w-6 h-6 mr-3 inline"></i>免费创建我的Better Me
+            </button>
+            
+            <div class="flex justify-center space-x-6 text-sm text-gray-600 mb-4">
+                <div class="secret-feature" id="free-consult">✓ 免费30分钟专家访谈</div>
+                <div class="secret-feature" id="exclusive-ai">✓ 专属AI分身定制</div>
+                <div class="secret-feature" id="247-service">✓ 24/7永不下线服务</div>
+            </div>
+            
+            <!-- 最终彩蛋 -->
+            <div id="final-surprise" class="easter-egg bg-gradient-to-r from-purple-100 to-blue-100 border border-purple-300 text-purple-800 px-4 py-3 rounded-lg text-sm mt-4">
+                🎉 恭喜！您已经发现了所有隐藏彩蛋，证明您有敏锐的观察力！<br>
+                <span class="font-semibold">我们将为您免费升级至VIP体验！</span> 💎
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - 简化版 -->
+    <footer class="py-12 border-t border-gray-200 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
+                            <span class="font-black text-white text-sm">Me²</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">Me²</span>
+                    </div>
+                    <p class="text-gray-600 mb-2">专家大脑数字化社区</p>
+                    <p class="text-sm text-gray-500">Better Me = 专家know-how × AI超能力</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3 text-gray-900">产品</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">专业访谈</a></li>
+                        <li><a href="#" class="hover:text-gray-900">AI训练</a></li>
+                        <li><a href="#" class="hover:text-gray-900">分身定制</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3 text-gray-900">支持</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-gray-900">帮助中心</a></li>
+                        <li><a href="#" class="hover:text-gray-900">联系我们</a></li>
+                        <li><a href="#" class="hover:text-gray-900">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化图标
+            lucide.createIcons();
+            
+            // 趣味性互动追踪
+            let easterEggsFound = 0;
+            const totalEasterEggs = 12;
+            
+            // 平滑滚动导航
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // 导航栏滚动效果 - 更新为白色主题
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('bg-white');
+                    nav.classList.remove('bg-white/80');
+                } else {
+                    nav.classList.add('bg-white/80');
+                    nav.classList.remove('bg-white');
+                }
+            });
+            
+            // 彩蛋触发函数
+            function triggerEasterEgg(element, message) {
+                if (element && !element.classList.contains('show')) {
+                    element.classList.add('show');
+                    easterEggsFound++;
+                    
+                    // 显示发现提示
+                    if (message) {
+                        setTimeout(() => {
+                            alert(message);
+                        }, 300);
+                    }
+                    
+                    // 检查是否发现所有彩蛋
+                    if (easterEggsFound >= totalEasterEggs) {
+                        setTimeout(() => {
+                            const finalSurprise = document.getElementById('final-surprise');
+                            if (finalSurprise) {
+                                finalSurprise.classList.add('show');
+                                finalSurprise.style.animation = 'bounce-gentle 1s ease-out';
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+            
+            // Logo彩蛋互动
+            document.querySelectorAll('.fun-logo').forEach(logo => {
+                logo.addEventListener('click', function() {
+                    const logoEasterEgg = document.getElementById('logo-easter-egg');
+                    triggerEasterEgg(logoEasterEgg, '🎉 哇！你发现了Logo的秘密！Me²的"²"代表"更好的自己"！');
+                });
+            });
+            
+            // Hero区域彩蛋
+            const heroLogo = document.querySelector('#hero-tagline');
+            if (heroLogo) {
+                heroLogo.addEventListener('click', function() {
+                    const hiddenEmoji = document.getElementById('hidden-emoji');
+                    const heroStars = document.getElementById('hero-stars');
+                    triggerEasterEgg(hiddenEmoji);
+                    triggerEasterEgg(heroStars, '✨ 你点亮了智慧的星星！每个专家都是夜空中最亮的星！');
+                });
+            }
+            
+            // 思考大脑彩蛋
+            const thinkingBrain = document.getElementById('thinking-brain');
+            if (thinkingBrain) {
+                thinkingBrain.addEventListener('click', function() {
+                    const brainEasterEgg = document.getElementById('brain-easter-egg');
+                    triggerEasterEgg(brainEasterEgg, '🧠 哈哈！AI分身确实在"思考"，它比普通AI工具聪明多了！');
+                });
+            }
+            
+            // 时间承诺彩蛋
+            const timePromise = document.getElementById('time-promise');
+            if (timePromise) {
+                timePromise.addEventListener('click', function() {
+                    const timeEasterEgg = document.getElementById('time-easter-egg');
+                    triggerEasterEgg(timeEasterEgg, '⏰ 真的只需要30分钟！我们已经优化了访谈流程，高效而深入！');
+                });
+            }
+            
+            
+            // 客户头像互动彩蛋
+            const clientAvatars = ['client-avatar-1', 'client-avatar-2', 'client-avatar-3'];
+            const avatarMessages = [
+                '👨‍💼 张总说："我的分身工作效率比我本人还高！"',
+                '☕ 客户说："现在随时都能找到您，太方便了！"',
+                '✅ 成功案例：客户满意度99%，比真人服务还贴心！'
+            ];
+            
+            clientAvatars.forEach((avatarId, index) => {
+                const avatar = document.getElementById(avatarId);
+                if (avatar) {
+                    avatar.addEventListener('click', function() {
+                        triggerEasterEgg(null, avatarMessages[index]);
+                    });
+                }
+            });
+            
+            // 成功案例头像彩蛋
+            const testimonialAvatars = [
+                { id: 'vc-avatar', secret: 'vc-secret', message: '投资人的秘密：AI分身帮我发现了3个独角兽项目！🦄' },
+                { id: 'lawyer-avatar', secret: 'lawyer-secret', message: '律师的秘密：我的分身从不忘记法律条文！📚' },
+                { id: 'ceo-avatar', secret: 'ceo-secret', message: 'CEO的秘密：我的分身比我还了解我的客户！🎯' }
+            ];
+            
+            testimonialAvatars.forEach(item => {
+                const avatar = document.getElementById(item.id);
+                const secret = document.getElementById(item.secret);
+                if (avatar) {
+                    avatar.addEventListener('click', function() {
+                        triggerEasterEgg(secret, item.message);
+                    });
+                }
+            });
+            
+            // 最终承诺彩蛋
+            const finalPromise = document.getElementById('final-promise');
+            if (finalPromise) {
+                finalPromise.addEventListener('click', function() {
+                    const finalEasterEgg = document.getElementById('final-easter-egg');
+                    triggerEasterEgg(finalEasterEgg, '🤝 这不只是承诺，是我们对每一位专家的郑重保证！');
+                });
+            }
+            
+            // 最终CTA按钮特效
+            const finalCTA = document.getElementById('final-cta');
+            if (finalCTA) {
+                finalCTA.addEventListener('click', function() {
+                    // 创建庆祝动画
+                    this.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24)';
+                    this.style.backgroundSize = '400% 400%';
+                    this.style.animation = 'pulse-rainbow 1s ease-in-out';
+                    
+                    setTimeout(() => {
+                        alert('🎊 恭喜！您即将拥有属于自己的AI分身！我们的专家团队会在24小时内联系您，开始这段令人兴奋的数字化之旅！让我们一起创造更好的你！');
+                    }, 500);
+                });
+            }
+            
+            // 服务特性悬停效果
+            const serviceFeatures = ['free-consult', 'exclusive-ai', '247-service'];
+            const featureMessages = [
+                '💬 专业访谈：我们的AI训练师会像老朋友一样和您聊天！',
+                '🎨 定制分身：每个分身都是独一无二的艺术品！',
+                '🌙 24/7服务：您的分身永远不会说"我在休息"！'
+            ];
+            
+            serviceFeatures.forEach((featureId, index) => {
+                const feature = document.getElementById(featureId);
+                if (feature) {
+                    feature.addEventListener('mouseover', function() {
+                        setTimeout(() => {
+                            const tooltip = document.createElement('div');
+                            tooltip.className = 'fixed bg-gray-800 text-white px-3 py-2 rounded text-xs z-50 pointer-events-none';
+                            tooltip.textContent = featureMessages[index];
+                            tooltip.style.left = '50%';
+                            tooltip.style.transform = 'translateX(-50%)';
+                            tooltip.style.bottom = '20px';
+                            document.body.appendChild(tooltip);
+                            
+                            setTimeout(() => {
+                                document.body.removeChild(tooltip);
+                            }, 2000);
+                        }, 500);
+                    });
+                }
+            });
+            
+            // 滚动触发动画
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有卡片元素
+            document.querySelectorAll('.minimal-card, .elegant-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(card);
+            });
+            
+            // 流程步骤动画观察器
+            const flowStepObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // 延迟动画，创建序列效果
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-in');
+                        }, index * 200);
+                        
+                        // 触发连接线动画和打字效果
+                        if (entry.target.classList.contains('flow-step')) {
+                            const connectionLine = document.querySelector('.connection-line');
+                            if (connectionLine) {
+                                connectionLine.style.animation = 'drawLine 4s ease-out forwards';
+                            }
+                            
+                            // 触发打字效果
+                            const typingText = entry.target.querySelector('.typing-text');
+                            if (typingText) {
+                                typingText.style.width = '100%';
+                                typingText.style.animation = 'typing 4s steps(50, end), blink-caret 0.75s step-end infinite';
+                            }
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            // 观察流程步骤
+            document.querySelectorAll('.flow-step').forEach((step, index) => {
+                flowStepObserver.observe(step);
+                
+                // 为每个步骤添加不同的延迟
+                step.style.transitionDelay = `${index * 0.2}s`;
+            });
+            
+            // 增强的按钮交互效果
+            document.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+                
+                // 悬停效果增强
+                button.addEventListener('mouseenter', function() {
+                    if (this.classList.contains('playful-button')) {
+                        this.style.transform = 'translateY(-2px)';
+                    }
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    if (this.classList.contains('playful-button')) {
+                        this.style.transform = '';
+                    }
+                });
+            });
+            
+            // 演示按钮点击事件（增强版）
+            document.getElementById('watchDemo').addEventListener('click', function() {
+                // 先显示有趣的加载动画
+                this.innerHTML = '🚀 正在准备您的分身...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.innerHTML = '🚀 开始创建分身';
+                    this.disabled = false;
+                }, 2000);
+            });
+            
+            // 秘密的Konami代码彩蛋
+            let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+            let konamiIndex = 0;
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        // 触发终极彩蛋
+                        document.body.style.animation = 'pulse-rainbow 3s ease-in-out';
+                        alert('🎮 恭喜发现终极彩蛋！您获得了"代码忍者"称号！我们将为您提供专属的开发者版本分身！');
+                        konamiIndex = 0;
+                    }
+                } else {
+                    konamiIndex = 0;
+                }
+            });
+            
+            // 鼠标轨迹特效（可选，适度使用）
+            let mouseTrail = [];
+            document.addEventListener('mousemove', function(e) {
+                mouseTrail.push({x: e.clientX, y: e.clientY, time: Date.now()});
+                
+                // 限制轨迹长度
+                if (mouseTrail.length > 20) {
+                    mouseTrail = mouseTrail.slice(-20);
+                }
+                
+                // 清理旧轨迹
+                mouseTrail = mouseTrail.filter(point => Date.now() - point.time < 1000);
+            });
+            
+            console.log('🎉 Me² 趣味系统已激活！尝试点击各种元素发现隐藏彩蛋！');
+        });
+    </script>
+</body>
+</html>
