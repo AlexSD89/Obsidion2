@@ -176,9 +176,9 @@ export default function Me2NexusWebsite() {
         </div>
       </nav>
 
-      {/* 1. Hero Section（主视觉区）- bg-gradient-to-br from-blue-50/80 via-indigo-50/60 to-white */}
+      {/* Hero Section */}
       <section className="relative pt-24 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-indigo-50/60 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 via-indigo-50/70 to-white"></div>
         <div className="absolute top-0 right-0 w-1/2 h-full">
           <div className="absolute inset-0 bg-gradient-to-l from-blue-100/50 via-blue-50/30 to-transparent"></div>
           <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-blue-300/30 to-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
@@ -198,15 +198,15 @@ export default function Me2NexusWebsite() {
                     Me² NEXUS
                   </span>
                   <br />
-                  专业级{" "}
+                  你的{" "}
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent">
-                    AI决策系统
+                    AI分身协作团队
                   </span>
                 </h1>
                 <p className="text-xl text-gray-600 max-w-xl leading-relaxed text-pretty">
-                  <strong>Me² = Me × Me</strong> — 新一代专业个体超级增强器
+                  <strong>Me² = Me × Me</strong> — 专业经验 × AI超级处理能力 = 指数级放大。
                   <br />
-                  通过多Agent协作系统和智能决策中心，帮助专业人士实现认知能力的指数级提升。不是AI工具，是学会你思维方式的专业分身。
+                  突破时间、认知、处理、复制四重边界，24/7专业分身团队为你工作。
                 </p>
               </div>
 
@@ -228,7 +228,7 @@ export default function Me2NexusWebsite() {
                     <div className="w-7 h-7 bg-gradient-to-r from-pink-500 to-red-500 rounded-full border-2 border-white shadow-sm"></div>
                     <div className="w-7 h-7 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full border-2 border-white shadow-sm"></div>
                   </div>
-                  <span className="text-gray-600 font-medium text-sm">专业级Agentic Mesh平台 Professional AI Platform</span>
+                  <span className="text-gray-600 font-medium text-sm">专业人士都在使用 Join professionals</span>
                 </div>
               </div>
             </div>
@@ -241,53 +241,75 @@ export default function Me2NexusWebsite() {
                       <div className="grid grid-cols-2 gap-5">
                         <div className="bg-gray-800 rounded-lg p-4">
                           <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-white text-sm font-semibold">Agentic Mesh协作中心</h3>
+                            <h3 className="text-white text-sm font-semibold">AI分身协作中心</h3>
                             <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
                           </div>
-                          <p className="text-gray-400 text-xs mb-3">AI协作平台概念integration</p>
+                          <p className="text-gray-400 text-xs mb-3">6个专业AI分身并行工作中</p>
 
                           <div className="space-y-2">
                             <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded p-2">
-                              <div className="flex items-center justify-between">
-                                <span className="text-white text-xs">智能数据分析</span>
-                                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                              </div>
-                              <p className="text-sky-100 text-xs">AI驱动的实时数据洞察...</p>
+                              <p className="text-white text-xs font-medium">投资分析师Alex</p>
+                              <p className="text-blue-100 text-xs">正在分析MRR增长模式</p>
                             </div>
-
+                            <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded p-2">
+                              <p className="text-white text-xs font-medium">战略规划师Sarah</p>
+                              <p className="text-emerald-100 text-xs">构建数字化转型路径</p>
+                            </div>
                             <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded p-2">
-                              <div className="flex items-center justify-between">
-                                <span className="text-white text-xs">战略规划助手</span>
-                                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                              </div>
-                              <p className="text-sky-100 text-xs">端到端的企业转型战略...</p>
+                              <p className="text-white text-xs font-medium">咨询专家David</p>
+                              <p className="text-purple-100 text-xs">设计创新解决方案</p>
                             </div>
                           </div>
                         </div>
 
                         <div className="bg-gray-800 rounded-lg p-4">
-                          <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-white text-sm font-semibold">实时处理能力</h3>
-                            <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded">Active</span>
-                          </div>
-
-                          <div className="space-y-2">
-                            <div className="text-xs">
-                              <span className="text-gray-400">效率提升:</span>
-                              <p className="text-white">将决策时间从数周缩短至数小时</p>
-                            </div>
-
-                            <div className="text-xs">
-                              <span className="text-gray-400">精准度增强:</span>
-                              <p className="text-white">基于大数据和AI算法的精准分析</p>
-                            </div>
-
-                            <div className="bg-gray-700 rounded p-2">
-                              <div className="flex items-center justify-between">
-                                <span className="text-white text-xs">创新驱动:</span>
-                                <span className="text-green-400 text-xs">突破传统思维模式</span>
+                          <h3 className="text-white text-sm font-semibold mb-2">实时处理能力</h3>
+                          <div className="space-y-3">
+                            <div>
+                              <div className="flex justify-between text-xs mb-1">
+                                <span className="text-gray-400">数据分析</span>
+                                <span className="text-green-400">{progress1}%</span>
+                              </div>
+                              <div className="w-full bg-gray-700 rounded-full h-1.5">
+                                <div
+                                  className="bg-gradient-to-r from-green-400 to-green-500 h-1.5 rounded-full transition-all duration-200"
+                                  style={{ width: `${progress1}%` }}
+                                ></div>
                               </div>
                             </div>
+                            <div>
+                              <div className="flex justify-between text-xs mb-1">
+                                <span className="text-gray-400">方案生成</span>
+                                <span className="text-blue-400">{Math.round(progress2)}%</span>
+                              </div>
+                              <div className="w-full bg-gray-700 rounded-full h-1.5">
+                                <div
+                                  className="bg-gradient-to-r from-blue-400 to-blue-500 h-1.5 rounded-full transition-all duration-200"
+                                  style={{ width: `${Math.round(progress2)}%` }}
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-gray-800 rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className="text-white text-sm font-semibold">AI处理状态</h3>
+                          <div className="text-xs text-green-400 font-medium">ACTIVE</div>
+                        </div>
+                        <div className="grid grid-cols-3 gap-3 text-center">
+                          <div>
+                            <div className="text-2xl font-bold text-white">{Math.floor(aiProcessing / 100)}</div>
+                            <div className="text-xs text-gray-400">数据源</div>
+                          </div>
+                          <div>
+                            <div className="text-2xl font-bold text-white">24/7</div>
+                            <div className="text-xs text-gray-400">在线时间</div>
+                          </div>
+                          <div>
+                            <div className="text-2xl font-bold text-white">∞</div>
+                            <div className="text-xs text-gray-400">并行任务</div>
                           </div>
                         </div>
                       </div>
@@ -298,33 +320,29 @@ export default function Me2NexusWebsite() {
             </div>
           </div>
         </div>
+
       </section>
 
       {/* Me² NEXUS AI协作平台演示 - 动态Dashboard展示 */}
-      <section className="py-20 bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 text-gray-800 relative overflow-hidden">
-        {/* 星空背景效果 */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {Array.from({ length: 50 }, (_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
+      <section className="py-20 bg-white text-gray-800 relative overflow-hidden">
+        {/* 微妙的几何背景装饰 */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+          <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-100 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-purple-100 to-transparent rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold mb-6 bg-gradient-to-r from-blue-800 via-purple-700 to-indigo-800 bg-clip-text text-transparent tracking-tight">
-              Me² NEXUS 下一代AI智能协作平台
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold mb-8 animate-pulse">
+              🔥 体验真实的 Agentic Mesh 协作流程
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-800 via-blue-600 to-purple-600 bg-clip-text text-transparent tracking-tight">
+              AI Agent 互联网
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              汇聚专业投资分析、战略规划与创意设计能力，为您的业务决策提供全方位智能支持
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              点击场景示例，观看三层Agent网络如何协作生成您的专业AI分身
               <br />
-              <strong>体验真实的Agent协作工作流程</strong>
+              <strong className="text-blue-600">从需求到交付，体验专业能力的指数级放大</strong>
             </p>
           </div>
 

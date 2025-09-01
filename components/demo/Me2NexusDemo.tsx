@@ -62,7 +62,7 @@ export default function Me2NexusDemo() {
   const CurrentComponent = currentIdentity.component
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 text-gray-800 overflow-hidden">
       {/* 星空背景效果 */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {stars.map((star) => (
@@ -86,11 +86,11 @@ export default function Me2NexusDemo() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-emerald-400 bg-clip-text text-transparent">
+          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-800 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
             Me² NEXUS
           </h1>
           <motion.p 
-            className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -111,7 +111,7 @@ export default function Me2NexusDemo() {
           >
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <motion.div 
-                className="w-64 h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
+                className="w-64 h-0.5 bg-gradient-to-r from-transparent via-gray-400/60 to-transparent"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1.2, delay: 1 }}
@@ -143,7 +143,7 @@ export default function Me2NexusDemo() {
                   tabIndex={0}
                 >
                   {/* 外发光效果 */}
-                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${identity.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${identity.color} opacity-30 group-hover:opacity-50 transition-opacity duration-300`}></div>
                   
                   {/* 主头像 */}
                   <div className={`relative w-24 h-24 rounded-full bg-gradient-to-br ${identity.color} flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300`}>
@@ -158,7 +158,7 @@ export default function Me2NexusDemo() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2 + index * 0.2 }}
                   >
-                    <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-full">
+                    <div className="bg-white/80 backdrop-blur-sm text-gray-700 text-xs px-3 py-1 rounded-full border border-gray-300/30">
                       {identity.name}
                     </div>
                   </motion.div>
@@ -201,7 +201,7 @@ export default function Me2NexusDemo() {
               animate={{ opacity: 1 }}
               transition={{ duration: 2, delay: 1.5 }}
             >
-              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-radial from-blue-500/10 via-purple-500/5 to-transparent rounded-full"></div>
+              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-radial from-white/10 via-blue-200/5 to-transparent rounded-full"></div>
             </motion.div>
           </motion.div>
 
@@ -218,7 +218,7 @@ export default function Me2NexusDemo() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700"
+                className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/30"
               >
                 <div className="flex justify-center mb-6">
                   <div className="transform scale-90">
@@ -226,10 +226,10 @@ export default function Me2NexusDemo() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-3 text-white">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-800">
                     {currentIdentity.name}
                   </h3>
-                  <p className="text-gray-300 text-lg mb-6">
+                  <p className="text-gray-600 text-lg mb-6">
                     正在为{currentIdentity.name}展示AI协作能力
                   </p>
                   <div className="flex justify-center gap-2">
@@ -237,7 +237,7 @@ export default function Me2NexusDemo() {
                       <div
                         key={index}
                         className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                          index === currentIndex ? 'bg-blue-400' : 'bg-gray-600'
+                          index === currentIndex ? 'bg-blue-600' : 'bg-gray-400'
                         }`}
                       />
                     ))}
@@ -255,7 +255,7 @@ export default function Me2NexusDemo() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 2.2 }}
         >
-          <p className="text-gray-400 max-w-lg mx-auto">
+          <p className="text-gray-600 max-w-lg mx-auto">
             点击任意AI头像了解更多详情，开启您的智能协作之旅
           </p>
         </motion.div>
